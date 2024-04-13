@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
   <nav class="shadow-md ">
     <div class="flex justify-evenly items-center py-4">
       <div id="logo" class="font-bold text-xl">Baomatso</div>
-      <button onclick="hideOrshow()" class="sm:hidden">
+      <button onclick="hideOrshow(menu)" class="sm:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -31,7 +32,7 @@
       </button>
       <div id="menu" class="hidden">
         <ul class="z-50 fixed text-right opacity-90 bg-slate-100 w-screen h-screen top-0 left-0 p-4">
-          <button onclick="hideOrshow()">
+          <button onclick="hideOrshow(menu)">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -41,11 +42,15 @@
           </li>
           <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Tin
               tức</a></li>
-          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Kết nối số</a></li>
-          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Khóa học</a></li>
-          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Trò chơi</a></li>
-          
-          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Hướng dẫn</a></li>
+          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Kết nối
+              số</a></li>
+          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Khóa
+              học</a></li>
+          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Trò
+              chơi</a></li>
+
+          <li class=" p-4 text-start my-1 bg-slate-300 font-medium text-gray-500 hover:text-black"><a href="">Hướng
+              dẫn</a></li>
         </ul>
       </div>
 
@@ -69,6 +74,62 @@
   <!-- End Nav -->
   <!-- Start TTNB -->
   <div class="wapper flex flex-col justify-center px-5 lg:px-44">
+    <div class="flex items-center justify-center space-x-2 p-4">
+      <input type="email" id="email" name="email" placeholder="Nhập email của bạn"
+        class="px-3 py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-72 flex-grow">
+      <div class="flex space-x-2 w-1/3">
+        <button type="submit"
+          class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 flex-1">Gửi</button>
+        <button type="submit"
+          class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 flex-1"
+          onclick="hideOrshow2()">Nâng cao</button>
+      </div>
+    </div>
+    <div id="dropdown_menu" class="hidden bg-white text-black p-2 mt-2 rounded-md shadow-lg flex" style="justify-content: space-between">
+      <form action="nhandulieu.php" method="POST" class="flex">
+        <div class="block px-2 py-1 hover:bg-gray-200 flex: 1" onclick="toggleRadioList('workList')">
+          Lĩnh vực làm việc
+          <div id="workList" class="hidden">
+            <input type="radio" id="work1" name="work" value="Bảo mật">
+            <label for="work1">Bảo mật</label><br>
+            <input type="radio" id="work2" name="work" value="Kinh doanh">
+            <label for="work2">Kinh doanh</label><br>
+            <input type="radio" id="work3" name="work" value="Ngân hàng">
+            <label for="work3">Ngân hàng</label><br>
+            <input type="radio" id="work4" name="work" value="Y tế">
+            <label for="work4">Y tế</label><br>
+            <!-- Add more options as needed -->
+          </div>
+        </div>
+        <div class="block px-2 py-1 hover:bg-gray-200 flex: 1" onclick="toggleRadioList('genderList')">
+          Giới tính
+          <div id="genderList" class="hidden">
+            <input type="radio" id="gender1" name="gender" value="Nam">
+            <label for="gender1">Nam</label><br>
+            <input type="radio" id="gender2" name="gender" value="Nữ">
+            <label for="gender2">Nữ</label><br>
+            <!-- Add more options as needed -->
+          </div>
+        </div>
+        <div class="block px-2 py-1 hover:bg-gray-200 flex: 1" onclick="toggleRadioList('ageList')">
+          Độ tuổi
+          <div id="ageList" class="hidden">
+            <input type="radio" id="age1" name="age" value="Dưới 15 tuổi">
+            <label for="age1">Dưới 15 tuổi</label><br>
+            <input type="radio" id="age2" name="age" value="Từ 15 đến 30 tuổi">
+            <label for="age2">Từ 15 đến 30 tuổi</label><br>
+            <input type="radio" id="age3" name="age" value="Từ 30 đến 50 tuổi">
+            <label for="age3">Từ 30 đến 50 tuổi</label><br>
+            <input type="radio" id="age4" name="age" value="Từ 50 trở lên">
+            <label for="age4">Từ 50 trở lên</label><br>
+            <!-- Add more options as needed -->
+          </div>
+        </div>
+        
+        <!-- Add other input fields as needed -->
+        <button type="submit">Gửi</button>
+      </form>
+    </div>
     <div class="">
       <h3 class="font-bold text-3xl mt-7 mb-2">Tin tức nổi bật</h3>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -165,7 +226,7 @@
 
     </div>
     <!-- Fouth page -->
-   
+
 
   </div>
 
@@ -273,7 +334,7 @@
 
 
 
-  <script src="/script.js"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,8 @@ let birdHeight = 24;
 let birdX = boardWidth/8;
 let birdY = boardHeight/2;
 let birdImg;
-
+let emailPromptShown = false;
+let intermediateScore = 0;
 let bird = {
     x : birdX,
     y : birdY,
@@ -67,7 +68,9 @@ window.onload = function() {
 
 function update() {
     requestAnimationFrame(update);
-    if (gameOver) {
+    if (gameOver && !emailPromptShown) {
+        showEmailPrompt();
+        emailPromptShown = true;
         return;
     }
     context.clearRect(0, 0, board.width, board.height);
@@ -89,7 +92,10 @@ function update() {
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
+            
             score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
+            ////////////
+            intermediateScore = score;
             pipe.passed = true;
         }
 
@@ -165,4 +171,24 @@ function detectCollision(a, b) {
            a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+}
+
+function showEmailPrompt() {
+    let email = prompt("Nhập email của bạn để chơi tiếp:", ""); // Hiển thị hộp thoại prompt để nhập email
+    if (email !== null && email.trim() !== "") { // Kiểm tra xem người dùng đã nhập email hay không
+        gameOver = false; // Cho phép chơi tiếp
+        // Cập nhật các thiết lập khác nếu cần
+       resetGame();
+
+    } else {
+        // Nếu người dùng không nhập email hoặc bấm hủy, không làm gì cả
+        gameOver = true; // Dừng trò chơi
+    }
+}
+function resetGame() {
+    bird.y = boardHeight / 2 - birdHeight / 2;
+    bird.x = boardWidth / 8;
+    velocityY = 0;
+    pipeArray = [];
+    score =  intermediateScore ;
 }

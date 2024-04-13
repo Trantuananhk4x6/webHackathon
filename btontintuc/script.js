@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 function hideOrshow(id) {
   var element = document.getElementById(id);
+=======
+function hideOrshow() {
+  var element = document.getElementById();
+>>>>>>> 389c0ecbb6ae51f9beaf678675984b65ed4d87d1
   if (element.classList.contains("hidden")) {
     element.classList.replace("hidden", "block");
   } else {
@@ -8,8 +13,13 @@ function hideOrshow(id) {
 
 }
 
+<<<<<<< HEAD
 function hideOrshow2() {
   var element = document.getElementById('dropdown_menu');
+=======
+function popup() {
+  var element = document.getElementById("mess",);
+>>>>>>> 389c0ecbb6ae51f9beaf678675984b65ed4d87d1
   if (element.classList.contains("hidden")) {
     element.classList.replace("hidden", "block");
   } else {
@@ -18,6 +28,7 @@ function hideOrshow2() {
 
 }
 
+<<<<<<< HEAD
 function toggleRadioList(id) {
   var element = document.getElementById(id);
   if (element.classList.contains("hidden")) {
@@ -26,3 +37,5 @@ function toggleRadioList(id) {
     element.classList.add("hidden");
   }
 }
+=======
+>>>>>>> 389c0ecbb6ae51f9beaf678675984b65ed4d87d1

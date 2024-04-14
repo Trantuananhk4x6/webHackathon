@@ -18,3 +18,12 @@ function popup() {
 
 }
 
+function sign_up() {
+  var element = document.getElementById("sign_up",);
+  if (element.classList.contains("hidden")) {
+    element.classList.replace("hidden", "block");
+  } else {
+    element.classList.replace("block", "hidden");
+  }
+
+}
